@@ -23,6 +23,12 @@ const App = () => {
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
+  useEffect(() => {
+    console.log("Current theme:", theme);
+    if (theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+  }, [theme]);
 
   console.log({ authUser });
 
@@ -34,7 +40,7 @@ const App = () => {
     );
 
   return (
-    <div data-theme={theme}>
+    <>
       <Navbar />
 
       <Routes>
@@ -46,7 +52,7 @@ const App = () => {
       </Routes>
 
       <Toaster />
-    </div>
+    </>
   );
 };
 export default App;
