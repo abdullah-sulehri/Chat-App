@@ -2,9 +2,20 @@ import { THEMES } from "../constants";
 import { useThemeStore } from "../store/useThemeStore";
 import { Send } from "lucide-react";
 
+// ⏰ Add timestamp to messages
 const PREVIEW_MESSAGES = [
-  { id: 1, content: "Hey! How's it going?", isSent: false },
-  { id: 2, content: "I'm doing great! Just working on some new features.", isSent: true },
+  {
+    id: 1,
+    content: "Hey! How's it going?",
+    isSent: false,
+    timestamp: new Date(),
+  },
+  {
+    id: 2,
+    content: "I'm doing great! Just working on some new features.",
+    isSent: true,
+    timestamp: new Date(),
+  },
 ];
 
 const SettingsPage = () => {
@@ -13,6 +24,7 @@ const SettingsPage = () => {
   return (
     <div className="h-screen container mx-auto px-4 pt-20 max-w-5xl">
       <div className="space-y-6">
+        {/* Theme selection section */}
         <div className="flex flex-col gap-1">
           <h2 className="text-lg font-semibold">Theme</h2>
           <p className="text-sm text-base-content/70">Choose a theme for your chat interface</p>
@@ -83,7 +95,10 @@ const SettingsPage = () => {
                             ${message.isSent ? "text-primary-content/70" : "text-base-content/70"}
                           `}
                         >
-                          12:00 PM
+                          {new Date(message.timestamp).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
                         </p>
                       </div>
                     </div>
@@ -113,4 +128,5 @@ const SettingsPage = () => {
     </div>
   );
 };
+
 export default SettingsPage;

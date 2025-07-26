@@ -40,7 +40,7 @@ const App = () => {
     );
 
   return (
-    <>
+    <div data-theme={theme}>
       <Navbar />
 
       <Routes>
@@ -52,7 +52,7 @@ const App = () => {
       </Routes>
 
       <Toaster />
-    </>
+    </div>
   );
 };
 export default App;
